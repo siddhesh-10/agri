@@ -268,8 +268,28 @@ exports.login = async (req, res, next) => {
         });
 
           // res.locals.user = result[0];
-          res.render('cproducts');
-          console.log("next")
+          db.start.query('SELECT * FROM cart WHERE c_id = ?', [decoded.id], (error, result) => {
+            console.log("heros"+result.length)
+             let total=0;
+  
+             for(let i=0;i<result.length;i++)
+             {
+               total+=result[i].t_price;
+            
+             }
+            if(result.length==0) {
+              return res.render('ccart',{
+                message: 'No items in cart !'
+            });
+            }  
+            else
+            {
+              res.render('ccart',{
+                cart : result,
+                pay:total
+            });
+            }
+          });
        //   return next();
         });
       } catch (err) {
