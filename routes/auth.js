@@ -20,6 +20,8 @@ router.get('/mlogout', mauthController.logout);
 router.get('/flogout', fauthController.logout);
 router.get('/mproduct', mauthController.maproduct);
 router.get('/msells', mauthController.msells);
+router.get('/mcustomer', mauthController.mcustomer);
+router.get('/mfarmer', mauthController.mfarmer);
 
 router.get('/ccart', cauthController.mycart);
 router.get('/cpurchase', cauthController.cpurchase); 

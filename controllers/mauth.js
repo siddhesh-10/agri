@@ -22,7 +22,14 @@ exports.login = async (req, res, next) => {
     // 2) Check if user exists && password is correct
     db.start.query('SELECT * FROM login WHERE l_id = ?', [email], async (error, results) => {
       console.log("ad er"+error);
-      console.log(password);  console.log(results[0].l_password+"  het there");
+      console.log(password);
+      if(results.length==0)
+      {
+        return res.status(401).render("mlogin", {
+          message: 'Incorrect email or password'
+        });
+      }
+      console.log(results[0].l_password+"  het there");
       const isMatch = await bcrypt.compare(password, results[0].l_password);
       console.log(isMatch+"hi a");
      
@@ -116,9 +123,63 @@ exports.login = async (req, res, next) => {
         console.log("decoded");
         console.log(decoded);
      
-          db.start.query('SELECT * FROM bill WHERE ad_id = ?', [decoded.id], (error, results) => {
+          db.start.query('SELECT * FROM bill INNER JOIN package ON bill.pac_id = package.pac_id WHERE bill.ad_id=?', [decoded.id], (error, results) => {
           res.render('msells',{
            bill:results
+          });
+        
+        });  
+      } catch (err) {
+        return next();
+      }
+    } else {
+      next();
+    }
+  } 
+  exports.mcustomer=async (req, res, next) => {
+    
+    if (req.cookies.jwt) {
+      try {
+        // 1) verify token
+        const decoded = await promisify(jwt.verify)(
+          req.cookies.jwt,
+          process.env.JWT_SECRET
+        );
+   
+        console.log("decoded");
+        console.log(decoded);
+     
+          db.start.query('SELECT * FROM customer ', (error, results) => {
+            console.log(results);
+          res.render('mcustomer',{
+           cust:results
+          });
+        
+        });  
+      } catch (err) {
+        return next();
+      }
+    } else {
+      next();
+    }
+  } 
+  exports.mfarmer=async (req, res, next) => {
+    
+    if (req.cookies.jwt) {
+      try {
+        // 1) verify token
+        const decoded = await promisify(jwt.verify)(
+          req.cookies.jwt,
+          process.env.JWT_SECRET
+        );
+   
+        console.log("decoded");
+        console.log(decoded);
+     
+          db.start.query('SELECT * FROM farmer ', (error, results) => {
+            console.log(results);
+          res.render('mfarmer',{
+           farm:results
           });
         
         });  
