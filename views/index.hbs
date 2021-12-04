@@ -19,7 +19,45 @@
     <style>
       /* Style the video: 100% width and height to cover the entire window */
 
+   #myVideo {
+  
+  right: 0;
+  bottom: 0;
+  top: -15;
+  max-width: 100%;
+  min-height: 100%;
+   z-index:-1;
+  
+}
 
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+.all
+{
+  background-color: #000;
+}
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
 /* Add some content at the bottom of the video/page */
 
 </style>
@@ -31,7 +69,7 @@
 
 
    </nav>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-bg dark">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -72,7 +110,9 @@
      
         
       </ul>
-  <img src="https://source.unsplash.com/LvySG1hvuzI/1600x900">
+  {{!-- <img src="https://source.unsplash.com/LvySG1hvuzI/1600x900"> --}}
+{{!-- <img src="avenger.jpg" alt="piooop" /> --}}
+
   </nav>
      
     </div><!-- /.navbar-collapse -->
@@ -80,7 +120,15 @@
 </nav>
 
 
-
+<video autoplay muted loop id="myVideo">
+  <source src="cart.mp4" type="video/mp4">
+</video>
+<div class="content">
+  <h1>Agrisale</h1>
+  <p>A E-commerse website for selling product and to buy products...</p>
+  <!-- Use a button to pause/play the video with JavaScript -->
+  <button id="myBtn" onclick="myFunction()">Pause</button>
+</div>
 
   <!-- Use a button to pause/play the video with JavaScript -->
   
@@ -98,6 +146,23 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script>
+// Get the video
+var video = document.getElementById("myVideo");
 
+// Get the button
+var btn = document.getElementById("myBtn");
+
+// Pause and play the video, and change the button text
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
   </body>
 </html>

@@ -40,7 +40,7 @@ db.start.connect(function(err) {
 
 
 //define routes
-
+app.use(express.static('views/images')); 
 app.use('/',require('./routes/pages'));
 app.use('/auth',require('./routes/auth'));
 

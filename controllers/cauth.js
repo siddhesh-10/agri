@@ -73,8 +73,14 @@ exports.login = async (req, res, next) => {
   
   exports.cproduct=async (req, res, next) => {
     const {p_name,p_type} =req.body;
+    // if(p_name.length==0)
+    //     {
+    //       p_name=p_type;
+    //       console.log(p_name);
+    //     }
     db.start.query('SELECT * FROM  product WHERE (p_name=?) OR (p_type=?) ',[p_name,p_type],async (error,results)=>{
 
+        
       if(results.length==0)
        {
            return res.render('cproducts',{
