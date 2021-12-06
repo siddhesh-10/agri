@@ -486,6 +486,7 @@ exports.login = async (req, res, next) => {
           });
       });
          });
+         refreshValuesOnOpen: true,
          db.start.query('SELECT * FROM bill WHERE c_id=?',[decoded.id],async (error,bill)=>{
           // THERE IS A LOGGED IN USER
           //req.user = result[0];
