@@ -20,6 +20,7 @@ router.get('/mlogout', mauthController.logout);
 router.get('/flogout', fauthController.logout);
 router.get('/mproduct', mauthController.maproduct);
 router.get('/msells', mauthController.msells);
+router.get('/mtopsells', mauthController.mtopsells);
 router.get('/mcustomer', mauthController.mcustomer);
 router.get('/mfarmer', mauthController.mfarmer);
 

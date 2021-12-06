@@ -1,0 +1,14 @@
+.container
+{
+    background-color: #D1E8E4;
+    /* height: 100%; */
+    /* color: azure; */
+  
+  
+}
+body {
+    background-image: url('LSsT.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;   height: 100vh;
+    background-size: cover;z-index: -1;
+}

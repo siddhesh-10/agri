@@ -136,6 +136,33 @@ exports.login = async (req, res, next) => {
       next();
     }
   } 
+  exports.mtopsells=async (req, res, next) => {
+    
+    if (req.cookies.jwt) {
+      try {
+        // 1) verify token
+        const decoded = await promisify(jwt.verify)(
+          req.cookies.jwt,
+          process.env.JWT_SECRET
+        );
+   
+        console.log("decoded");
+        console.log(decoded);
+      //  select *, count(amount) from bill group by p_id order by count(amount) ;
+          db.start.query('    select  product.p_name, sum(bill.p_quantity) from bill,product where bill.p_id=product.p_id group by product.p_name order by sum(bill.p_quantity) desc', (error, results) => {
+         console.log(results);
+            res.render('mtopsells',{
+           bill:results
+          });
+        
+        });  
+      } catch (err) {
+        return next();
+      }
+    } else {
+      next();
+    }
+  } 
   exports.mcustomer=async (req, res, next) => {
     
     if (req.cookies.jwt) {

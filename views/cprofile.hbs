@@ -17,9 +17,26 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+    <link rel="stylesheet" href="style.css">
+        <style>
+
+      .container
+{
+    background-color: #C1FFD7;
+    font-size: large;
+    /* color: azure; */
+  
+  
+}
+body {
+    background-image: url('/LSsT.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;   height: 100vh;
+    background-size: cover;z-index: -1;
+}
+    </style>
   </head>
-<body>
+<body >
   <div  class="container">
   <nav>
 
@@ -29,8 +46,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
+  <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-1 " >
       <li class="nav-item ">
         <a class="nav-link" href="/cprofile">Profile </a>
       </li>
@@ -48,6 +65,7 @@
       </li>
       
     </ul>
+   
     <form class="form-inline my-2 my-lg-0" action="/auth/cproduct" method="POST" >
       <input class="form-control mr-sm-2" type="search" name="p_type" placeholder="Search">
       <input class="form-control mr-sm-2" type="search" name="p_name" placeholder="Search" style="visibility: hidden;">
@@ -55,7 +73,7 @@
     </form>
   </div>
 </nav>
-  <div class="container">
+  <div class="container" >
     <h1>Welcome {{user.c_name}}</h1>
     <h2>address = {{user.c_address}}</h2>
     <h2>mobile no.= {{user.c_mobile}}</h2>
@@ -69,6 +87,6 @@
     </form>
     
   </div>
-  </div>
+  </div></div>
 </body>
 </html>
